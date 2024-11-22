@@ -44,6 +44,19 @@ vector<string> Estudiante::getMaterias() const {
     return materias;
 }
 
+void Estudiante::registrarAsistencia(string fecha, string materia, string estado) {
+    Asistencia asistencia(fecha, materia, estado);
+    asistencias.push_back(asistencia);
+}
+
+void Estudiante::mostrarAsistencias() const {
+    cout << "Asistencias materias previas inscritas del estudiante: " << endl;
+    for (const auto& asistencia : asistencias) {
+        cout << "Fecha: " << asistencia.getFecha() << ", Materia: " << asistencia.getMateria()
+             << ", Estado: " << asistencia.getEstado() << endl;
+    }
+}
+
 
 void Estudiante::mostrarEstudianteinicio() const {
     cout << "Estudiante: " << nombre << endl << "Edad: " << edad << endl <<"Promedio: " << promedio << endl << "Materias inscritas: " << endl ;
@@ -58,7 +71,7 @@ void Estudiante::materiasEstudiante(Estudiante& estudiane) const {
     int i=0,n_materia=0;
 
 
-    cout << "Ingrese otras materias : " << endl;
+    cout << "Ingrese las nuevas materias : " << endl;
     cin >> materia;
     materias.push_back(materia);
     cin >> materia;
@@ -91,9 +104,10 @@ void Estudiante::materiasEstudiante(Estudiante& estudiane) const {
 }
 
 void Estudiante::mostrarEstudiantefinal() const {
-    cout << "Perfil del estudintre" << endl;
-    cout << "Estudiante: " << nombre << endl << "Edad: " << edad << endl <<"Promedio: " << promedio << endl << "Materias inscritas: " << endl ;
+    cout << "Perfil del estudiante" << endl;
+    cout << "Estudiante: " << nombre << endl << "Edad: " << edad << endl << "Promedio: " << promedio << endl << "Materias inscritas: " << endl;
     for (int i = 0; i < materias.size(); i++) {
-        cout << i+1 <<") " << materias[i] << endl;
+        cout << i + 1 << ") " << materias[i] << endl;
     }
+    mostrarAsistencias();  // Mostrar las asistencias también.
 }

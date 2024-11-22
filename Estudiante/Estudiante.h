@@ -1,10 +1,10 @@
-
 #ifndef ESTUDIANTE_H
 #define ESTUDIANTE_H
 
 
 #include <string>
 #include<vector>
+#include "../Asistencia/Asistencia.h"
 
 using namespace std;
 
@@ -13,6 +13,7 @@ class Estudiante {
     int edad;       // Atributo privado
     float promedio;
     vector<string> materias;
+    vector<Asistencia> asistencias;
 
 public:
     Estudiante();                         // Constructor por defecto
@@ -30,6 +31,12 @@ public:
 
     void setMaterias(vector <string> materias);
     vector<string> getMaterias() const;
+
+
+    // Métodos para gestionar la asistencia
+    void registrarAsistencia(string fecha, string materia, string estado);
+    void mostrarAsistencias() const;
+
 
     void mostrarEstudianteinicio() const ;
     void materiasEstudiante(Estudiante& estudiane) const;
