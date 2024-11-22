@@ -42,6 +42,7 @@ public:
     void materiasEstudiante(Estudiante& estudiane) const;
     void mostrarEstudiantefinal() const;
     void validarMateria(const string& materia) const;
+    void validarFecha(const std::string& fecha);
 
 };
 

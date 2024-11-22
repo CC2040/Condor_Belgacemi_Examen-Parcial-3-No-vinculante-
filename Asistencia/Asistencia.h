@@ -3,7 +3,6 @@
 
 
 #include <string>
-#include <vector>
 #include "../Excepciones/Excepciones.h"
 
 using namespace std;

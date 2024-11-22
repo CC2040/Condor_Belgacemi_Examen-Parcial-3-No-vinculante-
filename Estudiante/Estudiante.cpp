@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include<regex>
 using namespace std;
 
 // Constructor por defecto
@@ -45,14 +46,10 @@ vector<string> Estudiante::getMaterias() const {
 }
 
 void Estudiante::registrarAsistencia(string fecha, string materia, string estado) {
-    try {
-        validarMateria(materia);  // Llamamos a la función para validar la materia
-        Asistencia asistencia(fecha, materia, estado);
-        asistencias.push_back(asistencia);
-    }
-    catch (const MateriaNoRegistradaException& e) {
-        cout << e.what() << endl;  // Si la materia no está registrada, mostramos un mensaje de error
-    }
+    validarMateria(materia);  // Llamamos a la función para validar la materia
+    validarFecha(fecha);
+    Asistencia asistencia(fecha, materia, estado);
+    asistencias.push_back(asistencia);
 }
 
 void Estudiante::mostrarAsistencias() const {
@@ -130,6 +127,14 @@ void Estudiante::validarMateria(const string& materia) const {
 
     if (!materiaValida) {
         throw MateriaNoRegistradaException();  // Si no está registrada, lanzamos la excepción
+    }
+}
+
+void Estudiante::validarFecha(const std::string& fecha) {
+    // Expresión regular para fechas en formato YYYY-MM-DD
+    std::regex formatoFecha("^\\d{4}-\\d{2}-\\d{2}$");
+    if (!std::regex_match(fecha, formatoFecha)) {
+        throw FechaInvalidaException(); // Lanza la excepción si el formato no es válido
     }
 }
 
