@@ -1,5 +1,7 @@
 # Examen-Parcial-3-No-vinculante-
-https://github.com/CC2040/Examen-Parcial-3-No-vinculante-.git
+https://github.com/CC2040/Examen-Parcial-3-No-vinculante-.git  
+Nota: Se creo 2 main para cada implementacion en cada lenguaje. Disculpar  
+
 Condiciones de Entrega del Examen de Programación en C++
 
 Estimado estudiante,
