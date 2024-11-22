@@ -45,8 +45,14 @@ vector<string> Estudiante::getMaterias() const {
 }
 
 void Estudiante::registrarAsistencia(string fecha, string materia, string estado) {
-    Asistencia asistencia(fecha, materia, estado);
-    asistencias.push_back(asistencia);
+    try {
+        validarMateria(materia);  // Llamamos a la función para validar la materia
+        Asistencia asistencia(fecha, materia, estado);
+        asistencias.push_back(asistencia);
+    }
+    catch (const MateriaNoRegistradaException& e) {
+        cout << e.what() << endl;  // Si la materia no está registrada, mostramos un mensaje de error
+    }
 }
 
 void Estudiante::mostrarAsistencias() const {
@@ -111,3 +117,19 @@ void Estudiante::mostrarEstudiantefinal() const {
     }
     mostrarAsistencias();  // Mostrar las asistencias también.
 }
+
+void Estudiante::validarMateria(const string& materia) const {
+    // Validamos si la materia está en la lista
+    bool materiaValida = false;
+    for (const string& mat : materias) {
+        if (mat == materia) {
+            materiaValida = true;
+            break;
+        }
+    }
+
+    if (!materiaValida) {
+        throw MateriaNoRegistradaException();  // Si no está registrada, lanzamos la excepción
+    }
+}
+

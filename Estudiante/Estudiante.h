@@ -41,6 +41,7 @@ public:
     void mostrarEstudianteinicio() const ;
     void materiasEstudiante(Estudiante& estudiane) const;
     void mostrarEstudiantefinal() const;
+    void validarMateria(const string& materia) const;
 
 };
 

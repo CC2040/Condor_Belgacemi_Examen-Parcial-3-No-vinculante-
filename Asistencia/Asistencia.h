@@ -4,6 +4,7 @@
 
 #include <string>
 #include <vector>
+#include "../Excepciones/Excepciones.h"
 
 using namespace std;
 
@@ -25,6 +26,13 @@ public:
 
     void setEstado(string e) { estado = e; }
     string getEstado() const { return estado; }
+
+    // Validación del formato de la fecha
+    void validarFecha() const {
+        if (fecha.length() != 10 || fecha[2] != '/' || fecha[5] != '/') {
+            throw FechaInvalidaException();
+        }
+    }
 };
 
 #endif //ASISTENCIA_H
